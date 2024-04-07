@@ -3,26 +3,21 @@
 function getComputerChoice() {
     // initialize variable to store random number
     let computerNumber;
-    // initialize variable to store game choice
-    let computerSelection;
     // create random number variable between 0 - 2
     computerNumber = Math.floor(Math.random() * 3);
     console.log(computerNumber);
     // write switch statement to choose game roll based on number
     switch (computerNumber) {
         case 0:
-            computerSelection = "rock";
+            return "rock";
             //console.log(computerSelection);
-            break;
         case 1:
-            computerSelection = "paper";
+            return "paper";
             //console.log(computerSelection);
-            break;
         case 2: 
-            computerSelection = "scissors";
+            return "scissors";
             //console.log(computerSelection);
     }
-    return computerSelection;
 }
 
 // write function to play a round of rock paper scissors
@@ -60,3 +55,17 @@ function playRound(playerSelection, computerSelection) {
         return "You lose! Rock beats scissors.";
     }
 }
+
+const playerSelection = "rock";
+// console.log(playRound(playerSelection, computerSelection));
+function playGame() {
+    //loop 5 times
+    for (let i = 0; i < 5; i++) {
+        // play a round
+        // get new computer choice
+        const computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
+    }
+}
+
+playGame();
