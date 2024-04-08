@@ -51,7 +51,6 @@ function playRound(playerSelection, computerSelection) {
         ++computerWins;
         return "You lose! Scissors beats paper.";
     }
-    // TEST THIS
     // player scissors, computer rock
     else {
         ++computerWins; 
@@ -65,7 +64,7 @@ function playGame() {
     // create variable to hold the returned string from a round
     let roundResults;
     // loop through 5 rounds
-    for (let i = 0; i < 5; i++) {
+    while ((computerWins < 3) && (playerWins < 3)) {
         // play a round
         // get new computer choice
         const computerSelection = getComputerChoice();
@@ -74,7 +73,6 @@ function playGame() {
         // if it was a tie, don't increment any score, make the loop go an additional time
         if (roundResults === "TIE") {
             console.log("It's a tie! Go again.");
-            --i;
         }
         // otherwise, display the results of the round and the current score
         else {
@@ -83,14 +81,15 @@ function playGame() {
             console.log(roundResults + currentScore);
         }
     }
+    displayWinner();
+}
+
+function displayWinner() {
     if (playerWins > computerWins) {
         console.log("Congratulations! You beat the computer. Keep it up!");
     }
     else if (playerWins < computerWins) {
         console.log("Oh no! You lost to the computer. Better luck next time!");
-    }
-    else {
-        console.log("")
     }
 }
 
