@@ -30,17 +30,17 @@ function playRound(playerSelection, computerSelection) {
     // ALL PLAYER WIN SCENARIOS
     // player rock, computer scissors
     else if (playerSelection === "rock" && computerSelection === "scissors") {
-        ++playerwins;
+        ++playerWins;
         return "You win! Rock beats scissors.";
     }
     // player paper, computer rock
     else if (playerSelection === "paper" && computerSelection === "rock") {
-        ++playerwins;
+        ++playerWins;
         return "You win! Paper beats rock.";
     }
     // player scissors, computer paper
     else if (playerSelection === "scissors" && computerSelection === "paper") {
-        ++playerwins;
+        ++playerWins;
         return "You win! Scissors beats paper";
     }
     // ALL COMPUTER WIN SCENARIOS
@@ -57,7 +57,7 @@ function playRound(playerSelection, computerSelection) {
     // TEST THIS
     // player scissors, computer rock
     else {
-        ++computerWins;
+        ++computerWins; 
         return "You lose! Rock beats scissors.";
     }
 }
@@ -65,16 +65,18 @@ function playRound(playerSelection, computerSelection) {
 const playerSelection = "rock";
 // console.log(playRound(playerSelection, computerSelection));
 function playGame() {
-    // initiate variable to track number of wins
-    let playerWins = 0;
-    let computerWins = 0;
     //loop 5 times
     for (let i = 0; i < 5; i++) {
         // play a round
         // get new computer choice
         const computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
+        let roundResults = playRound(playerSelection, computerSelection);
+        let currentScore = `\nPlayer score: ${playerWins}\nComputer score: ${computerWins}`
+        console.log(roundResults + currentScore);
     }
 }
 
+// initiate variable to track number of wins
+let playerWins = 0;
+let computerWins = 0;
 playGame();
