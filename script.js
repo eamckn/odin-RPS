@@ -27,31 +27,37 @@ function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         return "It's a tie! Go again.";
     }
-    // player wins
+    // ALL PLAYER WIN SCENARIOS
     // player rock, computer scissors
     else if (playerSelection === "rock" && computerSelection === "scissors") {
+        ++playerwins;
         return "You win! Rock beats scissors.";
     }
     // player paper, computer rock
     else if (playerSelection === "paper" && computerSelection === "rock") {
+        ++playerwins;
         return "You win! Paper beats rock.";
     }
     // player scissors, computer paper
     else if (playerSelection === "scissors" && computerSelection === "paper") {
+        ++playerwins;
         return "You win! Scissors beats paper";
     }
-    // computer wins
+    // ALL COMPUTER WIN SCENARIOS
     // player rock, computer paper
     else if (playerSelection === "rock" && computerSelection === "paper") {
+        ++computerWins;
         return "You lose! Paper beats rock.";
     }
     // player paper, computer scissors
     else if (playerSelection === "paper" && computerSelection === "scissors") {
+        ++computerWins;
         return "You lose! Scissors beats paper.";
     }
     // TEST THIS
     // player scissors, computer rock
     else {
+        ++computerWins;
         return "You lose! Rock beats scissors.";
     }
 }
@@ -59,6 +65,9 @@ function playRound(playerSelection, computerSelection) {
 const playerSelection = "rock";
 // console.log(playRound(playerSelection, computerSelection));
 function playGame() {
+    // initiate variable to track number of wins
+    let playerWins = 0;
+    let computerWins = 0;
     //loop 5 times
     for (let i = 0; i < 5; i++) {
         // play a round
