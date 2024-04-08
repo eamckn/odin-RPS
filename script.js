@@ -65,8 +65,9 @@ function playGame() {
     let roundResults;
     // loop through 5 rounds
     while ((computerWins < 3) && (playerWins < 3)) {
-        // play a round
-        // get new computer choice
+        // get player choice for current round
+        const playerSelection = prompt("Rock, paper, or scissors?", "").toLowerCase();
+        // get  computer choice for current round
         const computerSelection = getComputerChoice();
         // evaluate and store the round results
         roundResults = playRound(playerSelection, computerSelection);
@@ -93,8 +94,6 @@ function displayWinner() {
     }
 }
 
-// initialize player choice
-let playerSelection = prompt("Rock, paper, or scissors?", "").toLowerCase();
 // initiate variables to track number of wins
 let playerWins = 0;
 let computerWins = 0;
