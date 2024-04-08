@@ -25,7 +25,7 @@ function playRound(playerSelection, computerSelection) {
     // if else statement of all possible combinations
     // tie
     if (playerSelection === computerSelection) {
-        return "It's a tie! Go again.";
+        return "TIE";
     }
     // ALL PLAYER WIN SCENARIOS
     // player rock, computer scissors
@@ -71,8 +71,23 @@ function playGame() {
         // get new computer choice
         const computerSelection = getComputerChoice();
         let roundResults = playRound(playerSelection, computerSelection);
-        let currentScore = `\nPlayer score: ${playerWins}\nComputer score: ${computerWins}`
-        console.log(roundResults + currentScore);
+        if (roundResults === "TIE") {
+            console.log("It's a tie! Go again.");
+            --i;
+        }
+        else {
+            let currentScore = `\nPlayer score: ${playerWins}\nComputer score: ${computerWins}`;
+            console.log(roundResults + currentScore);
+        }
+    }
+    if (playerWins > computerWins) {
+        console.log("Congratulations! You beat the computer. Keep it up!");
+    }
+    else if (playerWins < computerWins) {
+        console.log("Oh no! You lost to the computer. Better luck next time!");
+    }
+    else {
+        console.log("")
     }
 }
 
