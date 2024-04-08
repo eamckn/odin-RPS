@@ -10,13 +10,10 @@ function getComputerChoice() {
     switch (computerNumber) {
         case 0:
             return "rock";
-            //console.log(computerSelection);
         case 1:
             return "paper";
-            //console.log(computerSelection);
         case 2: 
             return "scissors";
-            //console.log(computerSelection);
     }
 }
 
@@ -62,21 +59,27 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-const playerSelection = "rock";
-// console.log(playRound(playerSelection, computerSelection));
 function playGame() {
-    //loop 5 times
+    // create variable to hold the current score
+    let currentScore;
+    // create variable to hold the returned string from a round
+    let roundResults;
+    // loop through 5 rounds
     for (let i = 0; i < 5; i++) {
         // play a round
         // get new computer choice
         const computerSelection = getComputerChoice();
-        let roundResults = playRound(playerSelection, computerSelection);
+        // evaluate and store the round results
+        roundResults = playRound(playerSelection, computerSelection);
+        // if it was a tie, don't increment any score, make the loop go an additional time
         if (roundResults === "TIE") {
             console.log("It's a tie! Go again.");
             --i;
         }
+        // otherwise, display the results of the round and the current score
         else {
-            let currentScore = `\nPlayer score: ${playerWins}\nComputer score: ${computerWins}`;
+            // evaluate and store the current score
+            currentScore = `\nPlayer score: ${playerWins}\nComputer score: ${computerWins}`;
             console.log(roundResults + currentScore);
         }
     }
@@ -91,7 +94,9 @@ function playGame() {
     }
 }
 
-// initiate variable to track number of wins
+// initialize player choice
+const playerSelection = "rock";
+// initiate variables to track number of wins
 let playerWins = 0;
 let computerWins = 0;
 playGame();
