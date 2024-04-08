@@ -94,7 +94,7 @@ function displayWinner() {
 }
 
 // initialize player choice
-const playerSelection = "rock";
+let playerSelection = prompt("Rock, paper, or scissors?", "").toLowerCase();
 // initiate variables to track number of wins
 let playerWins = 0;
 let computerWins = 0;
