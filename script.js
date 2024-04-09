@@ -1,13 +1,10 @@
 
-// write function that gets a choice for the computer
 function getComputerChoice() {
-    // initialize variable to store random number
-    let computerNumber;
-    // create random number variable between 0 - 2
-    computerNumber = Math.floor(Math.random() * 3);
-    console.log(computerNumber);
-    // write switch statement to choose game roll based on number
-    switch (computerNumber) {
+    // Create random number variable between 0 - 2
+    let rockPaperScissorsNumber = Math.floor(Math.random() * 3);
+    console.log(rockPaperScissorsNumber);
+    // Choose game roll based on number
+    switch (rockPaperScissorsNumber) {
         case 0:
             return "rock";
         case 1:
@@ -17,41 +14,34 @@ function getComputerChoice() {
     }
 }
 
-// write function to play a round of rock paper scissors
+// Play a round of rock paper scissors
 function playRound(playerSelection, computerSelection) {
-    // if else statement of all possible combinations
-    // tie
+    // All possible matchups
     if (playerSelection === computerSelection) {
         return "TIE";
     }
     // ALL PLAYER WIN SCENARIOS
-    // player rock, computer scissors
     else if (playerSelection === "rock" && computerSelection === "scissors") {
         ++playerWins;
         return "You win! Rock beats scissors.";
     }
-    // player paper, computer rock
     else if (playerSelection === "paper" && computerSelection === "rock") {
         ++playerWins;
         return "You win! Paper beats rock.";
     }
-    // player scissors, computer paper
     else if (playerSelection === "scissors" && computerSelection === "paper") {
         ++playerWins;
         return "You win! Scissors beats paper";
     }
     // ALL COMPUTER WIN SCENARIOS
-    // player rock, computer paper
     else if (playerSelection === "rock" && computerSelection === "paper") {
         ++computerWins;
         return "You lose! Paper beats rock.";
     }
-    // player paper, computer scissors
     else if (playerSelection === "paper" && computerSelection === "scissors") {
         ++computerWins;
         return "You lose! Scissors beats paper.";
     }
-    // player scissors, computer rock
     else {
         ++computerWins; 
         return "You lose! Rock beats scissors.";
@@ -59,25 +49,20 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function playGame() {
-    // create variable to hold the current score
     let currentScore;
-    // create variable to hold the returned string from a round
     let roundResults;
-    // loop through 5 rounds
     while ((computerWins < 3) && (playerWins < 3)) {
-        // get player choice for current round
+        // Get player choice for current round
         const playerSelection = prompt("Rock, paper, or scissors?", "").toLowerCase();
-        // get  computer choice for current round
+        // Get  computer choice for current round
         const computerSelection = getComputerChoice();
-        // evaluate and store the round results
+        // Evaluate and store the round results
         roundResults = playRound(playerSelection, computerSelection);
-        // if it was a tie, don't increment any score, make the loop go an additional time
+        // If results are a tie, don't increment any score, make the loop go an additional time
         if (roundResults === "TIE") {
             console.log("It's a tie! Go again.");
         }
-        // otherwise, display the results of the round and the current score
         else {
-            // evaluate and store the current score
             currentScore = `\nPlayer score: ${playerWins}\nComputer score: ${computerWins}`;
             console.log(roundResults + currentScore);
         }
@@ -94,7 +79,6 @@ function displayWinner() {
     }
 }
 
-// initiate variables to track number of wins
 let playerWins = 0;
 let computerWins = 0;
 playGame();
