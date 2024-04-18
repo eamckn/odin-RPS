@@ -18,33 +18,33 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
     // All possible matchups
     if (playerSelection === computerSelection) {
-        return "TIE";
+        roundMessage.textContent = `It's a tie! You and the computer both selected ${playerSelection}.`;
     }
     // ALL PLAYER WIN SCENARIOS
     else if (playerSelection === "rock" && computerSelection === "scissors") {
         ++playerWins;
-        return "You win! Rock beats scissors.";
+        roundMessage.textContent = "You win! Rock beats scissors.";
     }
     else if (playerSelection === "paper" && computerSelection === "rock") {
         ++playerWins;
-        return "You win! Paper beats rock.";
+        roundMessage.textContent = "You win! Paper beats rock.";
     }
     else if (playerSelection === "scissors" && computerSelection === "paper") {
         ++playerWins;
-        return "You win! Scissors beats paper";
+        roundMessage.textContent = "You win! Scissors beats paper";
     }
     // ALL COMPUTER WIN SCENARIOS
     else if (playerSelection === "rock" && computerSelection === "paper") {
         ++computerWins;
-        return "You lose! Paper beats rock.";
+        roundMessage.textContent = "You lose! Paper beats rock.";
     }
     else if (playerSelection === "paper" && computerSelection === "scissors") {
         ++computerWins;
-        return "You lose! Scissors beats paper.";
+        roundMessage.textContent = "You lose! Scissors beats paper.";
     }
     else {
         ++computerWins; 
-        return "You lose! Rock beats scissors.";
+        roundMessage.textContent = "You lose! Rock beats scissors.";
     }
 }
 
@@ -72,9 +72,11 @@ let computerWins = 0;
 const rockBtn = document.querySelector("#rock");
 const paperBtn = document.querySelector("#paper");
 const scissorsBtn = document.querySelector("#scissors");
+
 const score = document.querySelector("#score");
 const playerScore = document.querySelector("#player-score");
 const computerScore = document.querySelector("#computer-score");
+const roundMessage = document.querySelector("#round-message");
 
 playerScore.textContent = `PLAYER SCORE: ${playerWins}`;
 computerScore.textContent = `COMPUTER SCORE: ${computerWins}`;
