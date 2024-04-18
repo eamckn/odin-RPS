@@ -51,34 +51,49 @@ function playRound(playerSelection, computerSelection) {
 function playGame() {
     let currentScore;
     let roundResults;
-    while ((computerWins < 3) && (playerWins < 3)) {
-        // Get player choice for current round
-        const playerSelection = prompt("Rock, paper, or scissors?", "").toLowerCase();
-        // Get  computer choice for current round
-        const computerSelection = getComputerChoice();
-        // Evaluate and store the round results
-        roundResults = playRound(playerSelection, computerSelection);
-        // If results are a tie, don't increment any score, make the loop go an additional time
-        if (roundResults === "TIE") {
-            console.log("It's a tie! Go again.");
-        }
-        else {
-            currentScore = `\nPlayer score: ${playerWins}\nComputer score: ${computerWins}`;
-            console.log(roundResults + currentScore);
-        }
+     // Get player choice for current round
+    const playerSelection = prompt("Rock, paper, or scissors?", "").toLowerCase();        // Get  computer choice for current round
+    const computerSelection = getComputerChoice();
+    // Evaluate and store the round results
+    roundResults = playRound(playerSelection, computerSelection);
+    // If results are a tie, don't increment any score, make the loop go an additional time
+    if (roundResults === "TIE") {
+        console.log("It's a tie! Go again.");
     }
-    displayWinner();
-}
-
-function displayWinner() {
-    if (playerWins > computerWins) {
-        console.log("Congratulations! You beat the computer. Keep it up!");
-    }
-    else if (playerWins < computerWins) {
-        console.log("Oh no! You lost to the computer. Better luck next time!");
+    else {
+        currentScore = `\nPlayer score: ${playerWins}\nComputer score: ${computerWins}`;
+        console.log(roundResults + currentScore);
     }
 }
 
 let playerWins = 0;
 let computerWins = 0;
-playGame();
+
+const rockBtn = document.querySelector("#rock");
+const paperBtn = document.querySelector("#paper");
+const scissorsBtn = document.querySelector("#scissors");
+const score = document.querySelector("#score");
+const playerScore = document.querySelector("#player-score");
+const computerScore = document.querySelector("#computer-score");
+
+playerScore.textContent = `PLAYER SCORE: ${playerWins}`;
+computerScore.textContent = `COMPUTER SCORE: ${computerWins}`;
+
+
+rockBtn.addEventListener("click", () => {
+    playRound("rock", getComputerChoice());
+    playerScore.textContent = `PLAYER SCORE: ${playerWins}`;
+    computerScore.textContent = `COMPUTER SCORE: ${computerWins}`;
+})
+paperBtn.addEventListener("click", () => {
+    playRound("paper", getComputerChoice())
+    playerScore.textContent = `PLAYER SCORE: ${playerWins}`;
+    computerScore.textContent = `COMPUTER SCORE: ${computerWins}`;
+})
+scissorsBtn.addEventListener("click", () => {
+    playRound("scissors", getComputerChoice())
+    playerScore.textContent = `PLAYER SCORE: ${playerWins}`;
+    computerScore.textContent = `COMPUTER SCORE: ${computerWins}`;
+})
+
+//playGame();
