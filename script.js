@@ -3,22 +3,19 @@
 let playerWins = 0;
 let computerWins = 0;
 
-const rockBtn = document.querySelector("#rock");
-const paperBtn = document.querySelector("#paper");
-const scissorsBtn = document.querySelector("#scissors");
+const choicesMenu = document.querySelector("#choices");
 
-const score = document.querySelector("#score");
 const playerScore = document.querySelector("#player-score");
+playerScore.textContent = `PLAYER SCORE: ${playerWins}`;
+
 const computerScore = document.querySelector("#computer-score");
+computerScore.textContent = `COMPUTER SCORE: ${computerWins}`;
+
 const roundMessage = document.querySelector("#round-message");
 const declareWinner = document.querySelector("#winner");
 
-playerScore.textContent = `PLAYER SCORE: ${playerWins}`;
-computerScore.textContent = `COMPUTER SCORE: ${computerWins}`;
-
-const choicesMenu = document.querySelector("#choices");
-
 let makeChoice = function(event) {
+
     let target = event.target;
 
             switch(target.id) {
