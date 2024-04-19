@@ -11,6 +11,8 @@ playerScore.textContent = `PLAYER SCORE: ${playerWins}`;
 const computerScore = document.querySelector("#computer-score");
 computerScore.textContent = `COMPUTER SCORE: ${computerWins}`;
 
+const playerPickDisplay = document.querySelector("#player-selection");
+const computerPickDisplay = document.querySelector("#computer-selection");
 const roundMessage = document.querySelector("#round-message");
 const declareWinner = document.querySelector("#winner");
 
@@ -46,32 +48,46 @@ choicesMenu.addEventListener('click', makeChoice)
 function playRound(playerSelection, computerSelection) {
     // All possible matchups
     if (playerSelection === computerSelection) {
+        playerPickDisplay.textContent = `You selected ${playerSelection}.`;
+        computerPickDisplay.textContent = `The computer selected ${computerSelection}.`;
         roundMessage.textContent = `It's a tie! You and the computer both selected ${playerSelection}.`;
     }
     // ALL PLAYER WIN SCENARIOS
     else if (playerSelection === "rock" && computerSelection === "scissors") {
         ++playerWins;
+        playerPickDisplay.textContent = `You selected ${playerSelection}.`;
+        computerPickDisplay.textContent = `The computer selected ${computerSelection}.`;
         roundMessage.textContent = "You win! Rock beats scissors.";
     }
     else if (playerSelection === "paper" && computerSelection === "rock") {
         ++playerWins;
+        playerPickDisplay.textContent = `You selected ${playerSelection}.`;
+        computerPickDisplay.textContent = `The computer selected ${computerSelection}.`;
         roundMessage.textContent = "You win! Paper beats rock.";
     }
     else if (playerSelection === "scissors" && computerSelection === "paper") {
         ++playerWins;
+        playerPickDisplay.textContent = `You selected ${playerSelection}.`;
+        computerPickDisplay.textContent = `The computer selected ${computerSelection}.`;
         roundMessage.textContent = "You win! Scissors beats paper";
     }
     // ALL COMPUTER WIN SCENARIOS
     else if (playerSelection === "rock" && computerSelection === "paper") {
         ++computerWins;
+        playerPickDisplay.textContent = `You selected ${playerSelection}.`;
+        computerPickDisplay.textContent = `The computer selected ${computerSelection}.`;
         roundMessage.textContent = "You lose! Paper beats rock.";
     }
     else if (playerSelection === "paper" && computerSelection === "scissors") {
         ++computerWins;
+        playerPickDisplay.textContent = `You selected ${playerSelection}.`;
+        computerPickDisplay.textContent = `The computer selected ${computerSelection}.`;
         roundMessage.textContent = "You lose! Scissors beats paper.";
     }
     else if (playerSelection === "scissors" && computerSelection === "rock") {
         ++computerWins; 
+        playerPickDisplay.textContent = `You selected ${playerSelection}.`;
+        computerPickDisplay.textContent = `The computer selected ${computerSelection}.`;
         roundMessage.textContent = "You lose! Rock beats scissors.";
     }
 }
