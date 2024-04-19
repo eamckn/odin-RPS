@@ -3,18 +3,18 @@
 let playerWins = 0;
 let computerWins = 0;
 
-const choicesMenu = document.querySelector("#choices");
+const gameChoiceList = document.querySelector("#choices");
 
-const playerScore = document.querySelector("#player-score");
-playerScore.textContent = `PLAYER SCORE: ${playerWins}`;
+const playerScoreDisplay = document.querySelector("#player-score");
+playerScoreDisplay.textContent = `PLAYER SCORE: ${playerWins}`;
 
-const computerScore = document.querySelector("#computer-score");
-computerScore.textContent = `COMPUTER SCORE: ${computerWins}`;
+const computerScoreDisplay = document.querySelector("#computer-score");
+computerScoreDisplay.textContent = `COMPUTER SCORE: ${computerWins}`;
 
-const playerPickDisplay = document.querySelector("#player-selection");
-const computerPickDisplay = document.querySelector("#computer-selection");
-const roundMessage = document.querySelector("#round-message");
-const declareWinner = document.querySelector("#winner");
+const playerPickDisplay = document.querySelector("#player-pick");
+const computerPickDisplay = document.querySelector("#computer-pick");
+const roundResult = document.querySelector("#round-result");
+const winner = document.querySelector("#winner");
 
 let makeChoice = function(event) {
 
@@ -23,72 +23,72 @@ let makeChoice = function(event) {
             switch(target.id) {
                 case "rock":
                     playRound("rock", getComputerChoice());
-                    playerScore.textContent = `PLAYER SCORE: ${playerWins}`;
-                    computerScore.textContent = `COMPUTER SCORE: ${computerWins}`;
+                    playerScoreDisplay.textContent = `PLAYER SCORE: ${playerWins}`;
+                    computerScoreDisplay.textContent = `COMPUTER SCORE: ${computerWins}`;
                     checkWinner();
                     break;
                 case "paper":
                     playRound("paper", getComputerChoice())
-                    playerScore.textContent = `PLAYER SCORE: ${playerWins}`;
-                    computerScore.textContent = `COMPUTER SCORE: ${computerWins}`;
+                    playerScoreDisplay.textContent = `PLAYER SCORE: ${playerWins}`;
+                    computerScoreDisplay.textContent = `COMPUTER SCORE: ${computerWins}`;
                     checkWinner();
                     break;
                 case "scissors":
                     playRound("scissors", getComputerChoice())
-                    playerScore.textContent = `PLAYER SCORE: ${playerWins}`;
-                    computerScore.textContent = `COMPUTER SCORE: ${computerWins}`;
+                    playerScoreDisplay.textContent = `PLAYER SCORE: ${playerWins}`;
+                    computerScoreDisplay.textContent = `COMPUTER SCORE: ${computerWins}`;
                     checkWinner();
                     break;
             }
 }
 
-choicesMenu.addEventListener('click', makeChoice)
+gameChoiceList.addEventListener('click', makeChoice)
 
 // Play a round of rock paper scissors
 function playRound(playerSelection, computerSelection) {
     // All possible matchups
     if (playerSelection === computerSelection) {
-        playerPickDisplay.textContent = `You selected ${playerSelection}.`;
-        computerPickDisplay.textContent = `The computer selected ${computerSelection}.`;
-        roundMessage.textContent = `It's a tie! You and the computer both selected ${playerSelection}.`;
+        playerPickDisplay.textContent = `You selected: ${playerSelection}.`;
+        computerPickDisplay.textContent = `The computer selected: ${computerSelection}.`;
+        roundResult.textContent = `It's a tie! You and the computer both selected ${playerSelection}.`;
     }
     // ALL PLAYER WIN SCENARIOS
     else if (playerSelection === "rock" && computerSelection === "scissors") {
         ++playerWins;
-        playerPickDisplay.textContent = `You selected ${playerSelection}.`;
-        computerPickDisplay.textContent = `The computer selected ${computerSelection}.`;
-        roundMessage.textContent = "You win! Rock beats scissors.";
+        playerPickDisplay.textContent = `You selected: ${playerSelection}.`;
+        computerPickDisplay.textContent = `The computer selected: ${computerSelection}.`;
+        roundResult.textContent = "You win! Rock beats scissors.";
     }
     else if (playerSelection === "paper" && computerSelection === "rock") {
         ++playerWins;
-        playerPickDisplay.textContent = `You selected ${playerSelection}.`;
-        computerPickDisplay.textContent = `The computer selected ${computerSelection}.`;
-        roundMessage.textContent = "You win! Paper beats rock.";
+        playerPickDisplay.textContent = `You selected: ${playerSelection}.`;
+        computerPickDisplay.textContent = `The computer selected: ${computerSelection}.`;
+        roundResult.textContent = "You win! Paper beats rock.";
     }
     else if (playerSelection === "scissors" && computerSelection === "paper") {
         ++playerWins;
-        playerPickDisplay.textContent = `You selected ${playerSelection}.`;
-        computerPickDisplay.textContent = `The computer selected ${computerSelection}.`;
-        roundMessage.textContent = "You win! Scissors beats paper";
+        playerPickDisplay.textContent = `You selected: ${playerSelection}.`;
+        computerPickDisplay.textContent = `The computer selected: ${computerSelection}.`;
+        roundResult.textContent = "You win! Scissors beats paper";
     }
     // ALL COMPUTER WIN SCENARIOS
     else if (playerSelection === "rock" && computerSelection === "paper") {
         ++computerWins;
-        playerPickDisplay.textContent = `You selected ${playerSelection}.`;
-        computerPickDisplay.textContent = `The computer selected ${computerSelection}.`;
-        roundMessage.textContent = "You lose! Paper beats rock.";
+        playerPickDisplay.textContent = `You selected: ${playerSelection}.`;
+        computerPickDisplay.textContent = `The computer selected: ${computerSelection}.`;
+        roundResult.textContent = "You lose! Paper beats rock.";
     }
     else if (playerSelection === "paper" && computerSelection === "scissors") {
         ++computerWins;
-        playerPickDisplay.textContent = `You selected ${playerSelection}.`;
-        computerPickDisplay.textContent = `The computer selected ${computerSelection}.`;
-        roundMessage.textContent = "You lose! Scissors beats paper.";
+        playerPickDisplay.textContent = `You selected: ${playerSelection}.`;
+        computerPickDisplay.textContent = `The computer selected: ${computerSelection}.`;
+        roundResult.textContent = "You lose! Scissors beats paper.";
     }
     else if (playerSelection === "scissors" && computerSelection === "rock") {
         ++computerWins; 
-        playerPickDisplay.textContent = `You selected ${playerSelection}.`;
-        computerPickDisplay.textContent = `The computer selected ${computerSelection}.`;
-        roundMessage.textContent = "You lose! Rock beats scissors.";
+        playerPickDisplay.textContent = `You selected: ${playerSelection}.`;
+        computerPickDisplay.textContent = `The computer selected: ${computerSelection}.`;
+        roundResult.textContent = "You lose! Rock beats scissors.";
     }
 }
 
@@ -109,11 +109,11 @@ function getComputerChoice() {
 
 function checkWinner() {
     if (playerWins === 5) {
-        declareWinner.textContent = "CONGRATULATIONS! YOU WIN!";
-        choicesMenu.removeEventListener('click', makeChoice)
+        winner.textContent = "CONGRATULATIONS! YOU WIN!";
+        gameChoiceList.removeEventListener('click', makeChoice)
     }
     else if (computerWins === 5) {
-        declareWinner.textContent = "Oh no! You lost. Better luck next time!";
-        choicesMenu.removeEventListener('click', makeChoice)
+        winner.textContent = "Oh no! You lost. Better luck next time!";
+        gameChoiceList.removeEventListener('click', makeChoice)
     }
 }
